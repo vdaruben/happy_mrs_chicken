@@ -14,6 +14,7 @@ function start()
     spawnMother(mother);
 
     // add key up layEgg event to web page
+    document.addEventListener('keydown', chickenDown, false);
     document.addEventListener('keyup',layEgg,false);
 }
 
@@ -30,6 +31,12 @@ function spawnMother(mother)
     img.style.marginLeft = '-50px';
 
     playfield.appendChild(img);
+}
+
+function chickenDown()
+{
+    mother = document.getElementById('mother');
+    mother.src = 'img/chicken_down.png';
 }
 
 function layEgg()
