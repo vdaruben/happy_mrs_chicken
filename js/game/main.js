@@ -42,6 +42,7 @@ function layEgg()
     var new_mother_offset_top = mother_offset_top - 30;
     mother.style.top = new_mother_offset_top + 'px';
     mother.style.marginTop = null;
+    mother.src = 'img/chicken_up.png'
 
     // create egg object
     chicken_count++;
@@ -52,7 +53,7 @@ function layEgg()
     img.src = egg.img;
     img.id = egg.id;
     img.classList.add(egg.type);
-    img.style.left = mother_offset_left + 33 + 'px';
+    img.style.left = mother_offset_left + 35 + 'px';
     img.style.top = mother_offset_top + 50 + 'px';
     img.style.zIndex = egg.id;
 
@@ -74,6 +75,7 @@ function moveMother(mother)
     var x = getRandomInt(-25, playfield_height - 25);
     var y = getRandomInt(0, playfield_width);
 
+    mother.src = 'img/chicken.png';
     mother.style.top =  x + 'px';
     mother.style.marginTop = '-50px';
     mother.style.left = y + 'px';
