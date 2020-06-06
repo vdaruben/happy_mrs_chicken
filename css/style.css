@@ -1,0 +1,55 @@
+@font-face {
+    font-family: 'peppa_pigmedium';
+    src:    url('../font/peppa_pig-webfont.woff2') format('woff2'),
+            url('../font/peppa_pig-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'peppa_pigmedium';
+    height: 100%;
+    width: 100%;
+}
+
+#playfield {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -300px;
+    margin-left: -400px;
+    background-color: deepskyblue;
+    height: 600px;
+    width: 800px;
+}
+
+#start {
+    position: relative;
+    color:  #ffff4d;
+    background-color: #ff1a1a;
+    border: none;
+    padding: 50px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 150px;
+    border-radius: 50%;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+#start:hover {
+    border: 15px dotted white;
+}
+
+#start:active {
+    background-color: #8600b3;
+}
+
+#score {
+    position: absolute;
+}
