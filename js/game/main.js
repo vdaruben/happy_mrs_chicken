@@ -19,17 +19,11 @@ function start()
 
 function spawnMother(mother)
 {
-    var id = mother.id;
-    var type = mother.type;
-    var src = mother.img;
-
     var img = document.createElement('img');
-    img.src = String(src);
-    img.id = id;
-    img.class = type;
-    img.style.position = 'relative';
-    img.style.height = '100px';
-    img.style.width= 'auto';
+
+    img.src = String(mother.img);
+    img.id = mother.id;
+    img.classList.add(mother.type);
     img.style.top = '50%';
     img.style.left = '50%';
     img.style.marginTop = '-50px';
@@ -40,13 +34,13 @@ function spawnMother(mother)
 
 function layEgg()
 {
-    // move mother up
     mother = document.getElementById('mother');
-    var old_top_position = mother.offsetTop;
-    var rect = mother.getBoundingClientRect();
+    var mother_offset_left = mother.offsetLeft;
+    var mother_offset_top = mother.offsetTop;
 
-    var new_top_postion = old_top_position - 30;
-    mother.style.top = new_top_postion + 'px';
+    // move mother up
+    var new_mother_offset_top = mother_offset_top - 30;
+    mother.style.top = new_mother_offset_top + 'px';
     mother.style.marginTop = null;
 
     // create egg object
@@ -57,12 +51,10 @@ function layEgg()
     var img = document.createElement('img');
     img.src = egg.img;
     img.id = egg.id;
-    img.class = egg.type;
-    img.style.position = 'fixed';
-    img.style.height = '50px';
-    img.style.width = 'auto';
-    img.style.left = rect.left + 33 + 'px';
-    img.style.top = rect.top + 50 + 'px';
+    img.classList.add(egg.type);
+    img.style.left = mother_offset_left + 33 + 'px';
+    img.style.top = mother_offset_top + 50 + 'px';
+    img.style.zIndex = egg.id;
 
     // spawn egg on the field under the mother
     var firstChild = playfield.firstChild;
