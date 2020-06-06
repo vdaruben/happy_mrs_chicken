@@ -7,10 +7,13 @@
 }
 
 body {
+    background-color: #3366cc;
     font-family: 'peppa_pigmedium';
     height: 100%;
     width: 100%;
 }
+
+/* in-game css */
 
 #playfield {
     position: fixed;
@@ -21,23 +24,8 @@ body {
     background-color: deepskyblue;
     height: 600px;
     width: 800px;
-    border-radius: 10%;
+    border-radius: 7%;
     overflow: hidden;
-}
-
-#computer {
-    pointer-events: none;
-    background-color: none;
-    box-sizing:border-box;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    margin-top: -300px;
-    margin-left: -400px;
-    height: 600px;
-    width: 800px;
-    border: 15px solid #b3b300;
-    border-radius: 10%;
 }
 
 #start {
@@ -67,6 +55,19 @@ body {
     background-color: #8600b3;
 }
 
+#mother {
+    position: relative;
+    height: 100px;
+    width: auto;
+    z-index: 9999999999999;
+}
+
+.egg {
+    position: absolute;
+    height: 50px;
+    width: auto;
+}
+
 #score {
     z-index: -1;
     position: absolute;
@@ -84,15 +85,39 @@ body {
     transform: translate(-50%, -50%);
 }
 
-#mother {
-    position: relative;
-    height: 100px;
-    width: auto;
-    z-index: 9999999999999;
+/* background CSS */
+
+#wall_and_table_border {
+    background-color: #df9fdf;
+    height: 600px;
+    border-bottom: 12px solid #24478f;
 }
 
-.egg {
-    position: absolute;
-    height: 50px;
-    width: auto;
+#screen_border {
+    pointer-events: none;
+    background-color: none;
+    box-sizing: border-box;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -300px;
+    margin-left: -400px;
+    height: 600px;
+    width: 800px;
+    border: 12px solid #b3b300;
+    border-radius: 7%;
+}
+
+#computer_screen {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -380px;
+    margin-left: -500px;
+    background-color: #ffffb3;
+    height: 780px;
+    width: 1000px;
+    border-radius: 7%;
+    border: 12px solid #b3b300;
+    box-sizing: border-box;
 }
