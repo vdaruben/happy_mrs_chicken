@@ -9,6 +9,11 @@ function start()
     hide(start_button);
     show(score);
 
+    // show star
+    var star = document.getElementById('star');
+    star.style.display = 'block';
+    star.classList.add('rotate');
+
     // place mother in center of playground
     mother = new chicken('mother', 'mother', 'img/chicken.png');
     spawnMother(mother);

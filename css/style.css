@@ -85,6 +85,36 @@ body {
     transform: translate(-50%, -50%);
 }
 
+#star {
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    left: 50%;
+    top: 50%;
+    margin-top: -100px;
+    margin-left: -100px;
+}
+
+.rotate {
+    -webkit-animation: spin1 3s infinite linear;
+    -moz-animation: spin1 3s infinite linear;
+    -o-animation: spin1 3s infinite linear;
+    animation: spin1 3s infinite linear;
+}
+
+@-webkit-keyframes spin1 {
+    0% { -webkit-transform: rotate(0deg);}
+    100% { -webkit-transform: rotate(360deg);}
+}
+@-moz-keyframes spin1 {
+    0% { -moz-transform: rotate(0deg);}
+    100% { -moz-transform: rotate(360deg);}
+}
+@-o-keyframes spin1 {
+    0% { -o-transform: rotate(0deg);}
+    100% { -o-transform: rotate(360deg);}
+}
+
 /* background CSS */
 
 #wall_and_table_border {
