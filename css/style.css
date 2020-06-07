@@ -95,24 +95,23 @@ body {
     margin-left: -100px;
 }
 
-.rotate {
-    -webkit-animation: spin1 3s infinite linear;
-    -moz-animation: spin1 3s infinite linear;
-    -o-animation: spin1 3s infinite linear;
-    animation: spin1 3s infinite linear;
+.animate-star {
+    animation: star 0.5s linear;
 }
 
-@-webkit-keyframes spin1 {
-    0% { -webkit-transform: rotate(0deg);}
-    100% { -webkit-transform: rotate(360deg);}
+@keyframes star {
+    0%   {transform: scale(1) rotate(0deg);}
+    100% {transform: scale(7) rotate(120deg);}
 }
-@-moz-keyframes spin1 {
-    0% { -moz-transform: rotate(0deg);}
-    100% { -moz-transform: rotate(360deg);}
+
+.animate-mother {
+    animation: mother 0.7s linear;
 }
-@-o-keyframes spin1 {
-    0% { -o-transform: rotate(0deg);}
-    100% { -o-transform: rotate(360deg);}
+
+@keyframes mother {
+    0%   {transform: scale(1) rotate(0deg);}
+    70%  {transform: scale(8) rotate(-360deg);}
+    100% {transform: scale(1) rotate(-360deg);}
 }
 
 /* background CSS */

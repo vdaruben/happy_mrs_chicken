@@ -9,22 +9,30 @@ function start()
     hide(start_button);
     show(score);
 
-    // show star
+    // show star and animate
     var star = document.getElementById('star');
     star.style.display = 'block';
-    star.classList.add('rotate');
+    star.classList.add('animate-star');
+    // hide star when animation has ended
+    star.addEventListener('webkitAnimationEnd',function(e) {
+        star.style.display = 'none';
+    }, false);
 
     // place mother in center of playground
-    mother = new chicken('mother', 'mother', 'img/chicken.png');
-    spawnMother(mother);
+    spawnMother();
+    // animate mother
+    var mother = document.getElementById('mother');
+    mother.classList.add('animate-mother');
+
 
     // add key up layEgg event to web page
     document.addEventListener('keydown', chickenDown, false);
     document.addEventListener('keyup',layEgg,false);
 }
 
-function spawnMother(mother)
+function spawnMother()
 {
+    var mother = new chicken('mother', 'mother', 'img/chicken.png')
     var img = document.createElement('img');
 
     img.src = String(mother.img);
