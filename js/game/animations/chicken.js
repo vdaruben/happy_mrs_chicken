@@ -47,10 +47,10 @@ function animateChickenJumpCycle()
     }
     else if(state === "chicken_up.png")
     {
+        playSoundEffect("sound/chicken_clucking.mp3");
         chicken.style.top = '50%';
         chicken.style.marginTop = '-50px';
         chicken.src = "img/chicken.png";
-        play_audio("sound/chicken_clucking.mp3");
     }
 }
 
@@ -60,8 +60,7 @@ function animateChickenDown(event)
     removeKeyDownControl();
     key_down = event.keyCode;
     setKeyUpControl();
-    play_audio("sound/fart.mp3");
-
+    playSoundEffect("sound/fart.mp3");
 }
 
 function animateChickenUp(chicken_offset_top)
@@ -70,7 +69,7 @@ function animateChickenUp(chicken_offset_top)
     chicken.style.top = new_chicken_offset_top + 'px';
     chicken.style.marginTop = null;
     chicken.src = 'img/chicken_up.png'
-    play_audio("sound/chicken_clucking.mp3");
+    playSoundEffect("sound/chicken_clucking.mp3");
 }
 
 function animateMoveChicken()
