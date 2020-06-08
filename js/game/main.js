@@ -20,10 +20,10 @@ function start()
 
     // spawn mother with animation
     spawnMother();
-    var mother = document.getElementById('mother');
+    var mother = getMother();
     mother.classList.add('animate-mother');
     mother.addEventListener('webkitAnimationEnd',function(e) {
-        interval_id = setInterval(animateChickenLegs, 100);
+        interval_id = setInterval(animateChickenWalkCycle, 100);
     }, false);
 
     // clear chicken walkcycle after 1 sec and do jump animation
@@ -32,7 +32,7 @@ function start()
         clearInterval(interval_id);
         mother.src = "img/chicken.png";
         // jump animation
-        interval_id = setInterval(animateChickenJump, 200);
+        interval_id = setInterval(animateChickenJumpCycle, 200);
     }, 1250);
 
     setTimeout(function(){
@@ -40,51 +40,9 @@ function start()
         clearInterval(interval_id);
         mother.src = "img/chicken.png";
         // add key up layEgg event to web page
-        document.addEventListener('keydown', chickenDown, false);
+        document.addEventListener('keydown', animateChickenDown, false);
         document.addEventListener('keyup',layEgg,false);
     }, 2250);
-}
-
-function animateChickenLegs()
-{
-    var mother = document.getElementById('mother');
-    var src = mother.src;
-    var n = src.lastIndexOf('/');
-    var state = src.substring(n + 1);
-
-    if(state === "chicken.png" || state === "chicken_left_foot_up.png" )
-    {
-        mother.src = "img/chicken_right_foot_up.png";
-    }
-    else if(state === "chicken_right_foot_up.png")
-    {
-        mother.src = "img/chicken_left_foot_up.png";
-    }
-
-}
-
-function animateChickenJump()
-{
-    var mother = document.getElementById('mother');
-    var mother_offset_left = mother.offsetLeft;
-    var mother_offset_top = mother.offsetTop;
-    var src = mother.src;
-    var n = src.lastIndexOf('/');
-    var state = src.substring(n + 1);
-
-    if(state === "chicken.png")
-    {
-        var new_mother_offset_top = mother_offset_top - 30;
-        mother.style.top = new_mother_offset_top + 'px';
-        mother.style.marginTop = null;
-        mother.src = 'img/chicken_up.png'
-    }
-    else if(state === "chicken_up.png")
-    {
-        mother.style.top = '50%';
-        mother.style.marginTop = '-50px';
-        mother.src = "img/chicken.png";
-    }
 }
 
 function spawnMother()
@@ -103,15 +61,9 @@ function spawnMother()
     playfield.appendChild(img);
 }
 
-function chickenDown()
-{
-    mother = document.getElementById('mother');
-    mother.src = 'img/chicken_down.png';
-}
-
 function layEgg()
 {
-    mother = document.getElementById('mother');
+    var mother = getMother();
     var mother_offset_left = mother.offsetLeft;
     var mother_offset_top = mother.offsetTop;
 
@@ -143,12 +95,13 @@ function layEgg()
 
     // timout and move mother
     setTimeout(function(){
-        moveMother(mother);
+        moveMother();
     }, 500);
 }
 
-function moveMother(mother)
+function moveMother()
 {
+    var mother = getMother();
     var x = getRandomInt(-25, playfield_height - 25);
     var y = getRandomInt(0, playfield_width);
 

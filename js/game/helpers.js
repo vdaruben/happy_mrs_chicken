@@ -13,3 +13,16 @@ function getRandomInt(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+function getMother()
+{
+    return document.getElementById('mother');
+}
+
+function getMotherState()
+{
+    var mother = getMother();
+    var src = mother.src;
+    var n = src.lastIndexOf('/');
+    return src.substring(n + 1);
+}
