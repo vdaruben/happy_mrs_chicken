@@ -15,7 +15,7 @@ function animateMotherStartAnimation()
     setTimeout(function(){
         clearInterval(interval_id);
         mother.src = "img/chicken.png";
-        setGameEventListeners();
+        setKeyDownControl();
     }, 2250);
 }
 
@@ -53,9 +53,12 @@ function animateChickenJumpCycle()
     }
 }
 
-function animateChickenDown()
+function animateChickenDown(event)
 {
     mother.src = 'img/chicken_down.png';
+    removeKeyDownControl();
+    key_down = event.keyCode;
+    setKeyUpControl();
 }
 
 function animateChickenUp(mother_offset_top)
