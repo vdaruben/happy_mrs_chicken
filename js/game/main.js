@@ -11,31 +11,25 @@ function start()
     hide(start_button);
     show(score);
     animateStar();
-    animateSpawnMother();
+    spawnMother();
     setMother();
+    animateMotherStartAnimation();
+}
 
-    mother.classList.add('animate-mother');
-    mother.addEventListener('webkitAnimationEnd',function(e) {
-        interval_id = setInterval(animateChickenWalkCycle, 100);
-    }, false);
+function spawnMother()
+{
+    var mother = new chicken('mother', 'mother', 'img/chicken.png')
+    var img = document.createElement('img');
 
-    // clear chicken walkcycle after 1 sec and do jump animation
-    setTimeout(function(){
-        // clear
-        clearInterval(interval_id);
-        mother.src = "img/chicken.png";
-        // jump animation
-        interval_id = setInterval(animateChickenJumpCycle, 200);
-    }, 1250);
+    img.src = String(mother.img);
+    img.id = mother.id;
+    img.classList.add(mother.type);
+    img.style.top = '50%';
+    img.style.left = '50%';
+    img.style.marginTop = '-50px';
+    img.style.marginLeft = '-50px';
 
-    setTimeout(function(){
-        // clear
-        clearInterval(interval_id);
-        mother.src = "img/chicken.png";
-        // add key up layEgg event to web page
-        document.addEventListener('keydown', animateChickenDown, false);
-        document.addEventListener('keyup',layEgg,false);
-    }, 2250);
+    playfield.appendChild(img);
 }
 
 function layEgg()

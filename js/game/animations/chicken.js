@@ -1,17 +1,22 @@
-function animateSpawnMother()
+function animateMotherStartAnimation()
 {
-    var mother = new chicken('mother', 'mother', 'img/chicken.png')
-    var img = document.createElement('img');
+    mother.classList.add('animate-mother');
 
-    img.src = String(mother.img);
-    img.id = mother.id;
-    img.classList.add(mother.type);
-    img.style.top = '50%';
-    img.style.left = '50%';
-    img.style.marginTop = '-50px';
-    img.style.marginLeft = '-50px';
+    mother.addEventListener('webkitAnimationEnd',function(e) {
+        interval_id = setInterval(animateChickenWalkCycle, 100);
+    }, false);
 
-    playfield.appendChild(img);
+    setTimeout(function(){
+        clearInterval(interval_id);
+        mother.src = "img/chicken.png";
+        interval_id = setInterval(animateChickenJumpCycle, 200);
+    }, 1250);
+
+    setTimeout(function(){
+        clearInterval(interval_id);
+        mother.src = "img/chicken.png";
+        setGameEventListeners();
+    }, 2250);
 }
 
 function animateChickenWalkCycle()
