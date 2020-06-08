@@ -1,6 +1,5 @@
 function animateChickenWalkCycle()
 {
-    var mother = getMother();
     var state = getMotherState();
 
     if(state === "chicken.png" || state === "chicken_left_foot_up.png" )
@@ -15,10 +14,8 @@ function animateChickenWalkCycle()
 
 function animateChickenJumpCycle()
 {
-    var mother = getMother();
-    var mother_offset_left = mother.offsetLeft;
-    var mother_offset_top = mother.offsetTop;
     var state = getMotherState();
+    var mother_offset_top = mother.offsetTop;
 
     if(state === "chicken.png")
     {
@@ -37,6 +34,5 @@ function animateChickenJumpCycle()
 
 function animateChickenDown()
 {
-    var mother = getMother();
     mother.src = 'img/chicken_down.png';
 }

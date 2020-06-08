@@ -21,7 +21,6 @@ function getMother()
 
 function getMotherState()
 {
-    var mother = getMother();
     var src = mother.src;
     var n = src.lastIndexOf('/');
     return src.substring(n + 1);

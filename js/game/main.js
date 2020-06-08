@@ -3,6 +3,7 @@ var playfield = document.getElementById('playfield');
 var playfield_width = 800;
 var playfield_height = 600;
 var chicken_count = 0;
+var mother = null;
 
 function start()
 {
@@ -20,7 +21,7 @@ function start()
 
     // spawn mother with animation
     spawnMother();
-    var mother = getMother();
+    mother = getMother();
     mother.classList.add('animate-mother');
     mother.addEventListener('webkitAnimationEnd',function(e) {
         interval_id = setInterval(animateChickenWalkCycle, 100);
@@ -63,7 +64,6 @@ function spawnMother()
 
 function layEgg()
 {
-    var mother = getMother();
     var mother_offset_left = mother.offsetLeft;
     var mother_offset_top = mother.offsetTop;
 
@@ -101,7 +101,6 @@ function layEgg()
 
 function moveMother()
 {
-    var mother = getMother();
     var x = getRandomInt(-25, playfield_height - 25);
     var y = getRandomInt(0, playfield_width);
 
