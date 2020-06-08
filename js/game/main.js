@@ -18,16 +18,73 @@ function start()
         star.style.display = 'none';
     }, false);
 
-    // place mother in center of playground
+    // spawn mother with animation
     spawnMother();
-    // animate mother
     var mother = document.getElementById('mother');
     mother.classList.add('animate-mother');
+    mother.addEventListener('webkitAnimationEnd',function(e) {
+        interval_id = setInterval(animateChickenLegs, 100);
+    }, false);
 
+    // clear chicken walkcycle after 1 sec and do jump animation
+    setTimeout(function(){
+        // clear
+        clearInterval(interval_id);
+        mother.src = "img/chicken.png";
+        // jump animation
+        interval_id = setInterval(animateChickenJump, 200);
+    }, 1250);
 
-    // add key up layEgg event to web page
-    document.addEventListener('keydown', chickenDown, false);
-    document.addEventListener('keyup',layEgg,false);
+    setTimeout(function(){
+        // clear
+        clearInterval(interval_id);
+        mother.src = "img/chicken.png";
+        // add key up layEgg event to web page
+        document.addEventListener('keydown', chickenDown, false);
+        document.addEventListener('keyup',layEgg,false);
+    }, 2250);
+}
+
+function animateChickenLegs()
+{
+    var mother = document.getElementById('mother');
+    var src = mother.src;
+    var n = src.lastIndexOf('/');
+    var state = src.substring(n + 1);
+
+    if(state === "chicken.png" || state === "chicken_left_foot_up.png" )
+    {
+        mother.src = "img/chicken_right_foot_up.png";
+    }
+    else if(state === "chicken_right_foot_up.png")
+    {
+        mother.src = "img/chicken_left_foot_up.png";
+    }
+
+}
+
+function animateChickenJump()
+{
+    var mother = document.getElementById('mother');
+    var mother_offset_left = mother.offsetLeft;
+    var mother_offset_top = mother.offsetTop;
+    var src = mother.src;
+    var n = src.lastIndexOf('/');
+    var state = src.substring(n + 1);
+
+    if(state === "chicken.png")
+    {
+        var new_mother_offset_top = mother_offset_top - 30;
+        mother.style.top = new_mother_offset_top + 'px';
+        mother.style.marginTop = null;
+        mother.src = 'img/chicken_up.png'
+    }
+    else if(state === "chicken_up.png")
+    {
+        mother.style.top = '50%';
+        mother.style.marginTop = '-50px';
+        mother.src = "img/chicken.png";
+    }
 }
 
 function spawnMother()
