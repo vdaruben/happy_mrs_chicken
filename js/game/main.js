@@ -1,5 +1,6 @@
 var start_button = document.getElementById('start');
 var playfield = document.getElementById('playfield');
+var score = document.getElementById('score');
 var playfield_width = 800;
 var playfield_height = 600;
 var chicken_count = 0;
@@ -9,19 +10,10 @@ function start()
 {
     hide(start_button);
     show(score);
+    animateStar();
+    animateSpawnMother();
+    setMother();
 
-    // show star and animate
-    var star = document.getElementById('star');
-    star.style.display = 'block';
-    star.classList.add('animate-star');
-    // hide star when animation has ended
-    star.addEventListener('webkitAnimationEnd',function(e) {
-        star.style.display = 'none';
-    }, false);
-
-    // spawn mother with animation
-    spawnMother();
-    mother = getMother();
     mother.classList.add('animate-mother');
     mother.addEventListener('webkitAnimationEnd',function(e) {
         interval_id = setInterval(animateChickenWalkCycle, 100);
@@ -46,68 +38,19 @@ function start()
     }, 2250);
 }
 
-function spawnMother()
-{
-    var mother = new chicken('mother', 'mother', 'img/chicken.png')
-    var img = document.createElement('img');
-
-    img.src = String(mother.img);
-    img.id = mother.id;
-    img.classList.add(mother.type);
-    img.style.top = '50%';
-    img.style.left = '50%';
-    img.style.marginTop = '-50px';
-    img.style.marginLeft = '-50px';
-
-    playfield.appendChild(img);
-}
-
 function layEgg()
 {
     var mother_offset_left = mother.offsetLeft;
     var mother_offset_top = mother.offsetTop;
-
-    // move mother up
-    var new_mother_offset_top = mother_offset_top - 30;
-    mother.style.top = new_mother_offset_top + 'px';
-    mother.style.marginTop = null;
-    mother.src = 'img/chicken_up.png'
-
-    // create egg object
     chicken_count++;
-    var egg = new chicken(chicken_count, 'egg', 'img/egg.png');
 
-    // create img element for egg
-    var img = document.createElement('img');
-    img.src = egg.img;
-    img.id = egg.id;
-    img.classList.add(egg.type);
-    img.style.left = mother_offset_left + 35 + 'px';
-    img.style.top = mother_offset_top + 50 + 'px';
-    img.style.zIndex = egg.id;
-
-    // spawn egg on the field under the mother
-    var firstChild = playfield.firstChild;
-    playfield.insertBefore(img, firstChild);
-
-    // show the new score
+    animateChickenUp(mother_offset_top)
+    animateLayEgg(mother_offset_top, mother_offset_left);
     setScore(chicken_count);
 
-    // timout and move mother
     setTimeout(function(){
-        moveMother();
+        animateMoveMother();
     }, 500);
-}
-
-function moveMother()
-{
-    var x = getRandomInt(-25, playfield_height - 25);
-    var y = getRandomInt(0, playfield_width);
-
-    mother.src = 'img/chicken.png';
-    mother.style.top =  x + 'px';
-    mother.style.marginTop = '-50px';
-    mother.style.left = y + 'px';
 }
 
 function setScore(score)

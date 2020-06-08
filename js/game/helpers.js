@@ -1,12 +1,12 @@
-var hide = function hide(e)
+function hide(e)
 {
     e.style.display = 'none';
-};
+}
 
-var show = function show(e)
+function show(e)
 {
     e.style.display = 'block';
-};
+}
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -14,14 +14,7 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function getMother()
+function setMother()
 {
-    return document.getElementById('mother');
-}
-
-function getMotherState()
-{
-    var src = mother.src;
-    var n = src.lastIndexOf('/');
-    return src.substring(n + 1);
+    mother = document.getElementById('mother');
 }
