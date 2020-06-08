@@ -78,6 +78,8 @@ function animateMoveMother()
     mother.style.top =  x + 'px';
     mother.style.marginTop = '-50px';
     mother.style.left = y + 'px';
+
+    setKeyDownControl();
 }
 
 function getMotherState()

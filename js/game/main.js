@@ -44,7 +44,7 @@ function layEgg()
 
     setTimeout(function(){
         animateMoveMother();
-    }, 500);
+    }, 250);
 }
 
 function setScore(score)

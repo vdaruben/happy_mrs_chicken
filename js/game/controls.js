@@ -28,6 +28,5 @@ function checkKeyUp(event)
     {
         layEgg();
         removeKeyUpControl();
-        setKeyDownControl()
     }
 }
