@@ -9,6 +9,7 @@ var chicken = null;
 function start()
 {
     hide(start_button);
+    play_audio('sound/theme_song.mp3');
     show(score);
     animateStar();
     spawnChicken();
