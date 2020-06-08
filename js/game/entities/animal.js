@@ -1,7 +1,7 @@
-class chicken {
+class animal {
     constructor(id, type, img) {
         this.id = id;
-        this.type = type; // mother, egg
+        this.type = type; // chicken, egg
         this.img = img;
     }
 }

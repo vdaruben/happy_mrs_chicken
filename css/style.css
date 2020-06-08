@@ -55,7 +55,7 @@ body {
     background-color: #8600b3;
 }
 
-#mother {
+#chicken {
     position: relative;
     height: 100px;
     width: auto;
@@ -104,11 +104,11 @@ body {
     100% {transform: scale(7) rotate(120deg);}
 }
 
-.animate-mother {
-    animation: mother 0.7s linear;
+.animate-chicken {
+    animation: chicken 0.7s linear;
 }
 
-@keyframes mother {
+@keyframes chicken {
     0%   {transform: scale(1) rotate(0deg);}
     70%  {transform: scale(8) rotate(-360deg);}
     100% {transform: scale(1) rotate(-360deg);}
